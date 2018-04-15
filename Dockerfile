@@ -6,4 +6,6 @@ WORKDIR /var/www/html
 
 ADD . /var/www/html
 
-COPY config/php.ini /usr/local/etc/php/ 
+COPY config/php.ini /usr/local/etc/php/
+
+#RUN cd /var/www/html/ && chmod 777 /images 
