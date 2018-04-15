@@ -6,3 +6,5 @@ database.env
 composer
 composer.phar
 /config
+post_old.php
+temp.php

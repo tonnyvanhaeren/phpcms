@@ -12,8 +12,15 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <?php 
-          $query = "SELECT * FROM posts ";
+        <?php
+        
+          if(isset($_GET['category_id'])){
+            $post_category_id = $_GET['category_id'];
+
+          }
+
+
+          $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id ";
 
           $select_all_posts_query = mysqli_query($connection, $query);
         
