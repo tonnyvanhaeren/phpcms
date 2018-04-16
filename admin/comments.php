@@ -33,10 +33,6 @@
                 include "includes/edit_post.php";
                 break;
 
-              case '34';
-                echo "";
-                break;
-
               default:
                 include "includes/view_all_comments.php";  
               break;  

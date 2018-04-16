@@ -16,7 +16,7 @@
           $query = "SELECT * FROM posts " ;
 
           $select_all_posts_query = mysqli_query($connection, $query);
-        
+          
           while($row = mysqli_fetch_assoc($select_all_posts_query)) {
             $post_id = $row['post_id'];
             $post_title = $row['post_title'];
@@ -28,7 +28,7 @@
 
             if($post_status !== 'published') {
 
-              echo "<h1 class='text-center'>List published post empty</h1>" ;
+              echo "<h1 class='text-center'>Post with id: {$post_id} not published yet</h1>" ;
 
             } else {
               
@@ -40,9 +40,7 @@
               </h1>
 
               <!-- First Blog Post -->
-              <h2>
-                <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
-              </h2>
+              <h2><a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a></h2>
               <p class="lead">
                 by <a href="index.php"><?php echo $post_author; ?></a>
               </p>
