@@ -11,6 +11,8 @@
       <th>Content</th>
       <th>Comment Count</th>
       <th>Date</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -65,7 +67,8 @@
         $id = $_GET['delete']; 
         $query = "DELETE FROM posts WHERE post_id = {$id} ";
 
-        $delete = mysqli_query($connection, $query);  
+        $delete = mysqli_query($connection, $query);
+        header("Location: posts.php");  
       }
     
     ?>
