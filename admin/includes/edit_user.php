@@ -15,7 +15,6 @@ if(isset($_GET['u_id'])){
     $user_email = $row['user_email'];
     $user_image = $row['user_image'];
     $user_role = $row['user_role'];
-
   }
 }
 
