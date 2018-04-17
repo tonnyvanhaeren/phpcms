@@ -45,8 +45,9 @@
             echo "<td><a href='../post.php?p_id=$post_id'>{$post_title}</a></td>";
           } */
     
-          echo "<td><a href=''>Approve</a></td>";
-          echo "<td><a href=''>Up Approve</a></td>";
+          echo "<td><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>";
+          echo "<td><a href='users.php?change_to_subscriber={$user_id}'>Subscriber</a></td>";
+          echo "<td><a href='users.php?source=edit_user&u_id={$user_id}'>Edit</a></td>";          
           echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
         echo "</tr>";
     
@@ -54,20 +55,20 @@
     ?>
 
     <?php
-      if(isset($_GET['approve'])){
-        $comment_id = $_GET['approve']; 
-        $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = {$comment_id} ";
+      if(isset($_GET['change_to_admin'])){
+        $user_id = $_GET['change_to_admin']; 
+        $query = "UPDATE users SET user_role = 'admin' WHERE user_id = {$user_id} ";
 
-        $approve = mysqli_query($connection, $query);
-        header("Location: comments.php");  
+        $user_role_amin = mysqli_query($connection, $query);
+        header("Location: users.php");  
       }
 
-      if(isset($_GET['unapprove'])){
-        $comment_id = $_GET['unapprove']; 
-        $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = {$comment_id} ";
+      if(isset($_GET['change_to_subscriber'])){
+        $user_id = $_GET['change_to_subscriber']; 
+        $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = {$user_id} ";
 
-        $unapprove = mysqli_query($connection, $query);
-        header("Location: comments.php");  
+        $user_subscriber_role = mysqli_query($connection, $query);
+        header("Location: users.php");   
       }
 
       if(isset($_GET['delete'])){
@@ -77,7 +78,6 @@
         $delete = mysqli_query($connection, $query);
         header("Location: users.php");  
       }
-    
     ?>
   </tbody>
 </table>
