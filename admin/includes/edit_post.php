@@ -76,8 +76,6 @@
 
 ?>  
 
-
-
 <form action="" method="post" enctype="multipart/form-data">    
   <div class="form-group">
     <label for="title">Post Title</label>
@@ -101,20 +99,24 @@
           echo "<option value='{$cat_id}'>{$cat_title}</option>";
       
         }
-      
       ?>
     </select>
-
-
-
   </div>
   <div class="form-group">
     <label for="Post Author">Post Author</label>
     <input type="text" value="<?php echo $post_author ; ?>" class="form-control" name="post_author">
   </div>
   <div class="form-group">
-    <label for="Post Status">Post Status</label>
-    <input value="<?php echo $post_status ; ?>" type="text" class="form-control" name="post_status">
+    <select name="post_status" id="" class="form-control"> 
+      <option value='<?php echo $post_status ; ?>'><?php echo $post_status ; ?></option>";
+      <?php 
+        if($post_status == 'published'){
+          echo "<option value='draft'>Draft</option>";
+        }else {
+          echo "<option value='published'>Published</option>";
+        }
+      ?>
+    </select>
   </div>
   <div class="form-group">
     <img width='100' src="../images/<?php echo $post_image ; ?>" alt="image" />

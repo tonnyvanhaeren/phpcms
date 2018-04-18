@@ -27,10 +27,6 @@
             $post_status = $row['post_status'];
 
             if($post_status !== 'published') {
-
-              echo "<h1 class='text-center'>Post with id: {$post_id} not published yet</h1>" ;
-
-            } else {
               
             ?>  
 
