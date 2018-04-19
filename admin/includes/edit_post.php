@@ -71,6 +71,9 @@
     
     confirmQuery($update_post);
 
+    echo "<p class='bg-success'>Post Updated.
+     <a href='../post.php?p_id={$post_id}'>View Post</a> | 
+     <a href='posts.php'>Edit more Post</a></p>";
 
   }
 
@@ -81,7 +84,7 @@
     <label for="title">Post Title</label>
     <input value="<?php echo $post_title ; ?>" type="text" class="form-control" name="post_title">
   </div>
-  <div class="form-group">
+  <div class="form-group" style="width: 300px;">
     <select name="post_category" id="" class="form-control"> 
       <?php 
 
@@ -106,7 +109,9 @@
     <label for="Post Author">Post Author</label>
     <input type="text" value="<?php echo $post_author ; ?>" class="form-control" name="post_author">
   </div>
-  <div class="form-group">
+  
+  <div class="form-group" style="width: 200px;">
+
     <select name="post_status" id="" class="form-control"> 
       <option value='<?php echo $post_status ; ?>'><?php echo $post_status ; ?></option>";
       <?php 
@@ -118,6 +123,7 @@
       ?>
     </select>
   </div>
+
   <div class="form-group">
     <img width='100' src="../images/<?php echo $post_image ; ?>" alt="image" />
     <input type="file" name="image"> 

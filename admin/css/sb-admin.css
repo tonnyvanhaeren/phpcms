@@ -17,6 +17,11 @@ body {
     }
 }
 
+#bulkOptionsContainer {
+    padding: 0px;
+    padding-bottom: 10px;
+}
+
 #wrapper {
     padding-left: 0;
 }
@@ -222,3 +227,4 @@ ul.alert-dropdown {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
