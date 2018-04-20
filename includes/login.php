@@ -3,7 +3,8 @@
 
 <?php 
   if(isset($_POST['login'])){
-    $username      = $_POST['username']; 
+
+    $username = $_POST['username']; 
     $password = $_POST['user_password'];
 
     $username =  mysqli_real_escape_string($connection, $username);
@@ -27,6 +28,10 @@
       $user_password = $row['user_password'];
  
     }
+
+    //$salt = getenv('SALT');
+
+    $password = crypt($password, $user_password);
 
     if($username === $user_username && $password === $user_password) {
 
