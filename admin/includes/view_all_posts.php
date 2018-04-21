@@ -51,7 +51,16 @@
 
           confirmQuery($copy_query);
               
-            break;          
+            break;
+          case 'reset_wiews_count':
+            $query = "UPDATE posts SET post_views_count = 0
+              WHERE post_id = {$postValueId} ";
+            $update_views_post = mysqli_query($connection, $query);
+  
+            confirmQuery($update_views_post);
+  
+            break;            
+            
       }
     }
   }
@@ -65,6 +74,7 @@
       <option value="draft">Draft</option>
       <option value="delete">Delete</option>
       <option value="clone">Clone</option>
+      <option value="reset_wiews_count">Reset views count</option>
     </select>
   </div>
   <div class="col-xs-4">
@@ -87,6 +97,7 @@
         <th>Content</th>
         <th>Comment Count</th>
         <th>Date</th>
+        <th>Visited</th>
         <th>Show</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -108,6 +119,7 @@
           $post_content = $row['post_content'];
           $post_comment_count = $row['post_comment_count'];
           $post_date = $row['post_date'];
+          $post_views_count = $row['post_views_count'];
 
           echo "<tr>";
             ?>
@@ -140,6 +152,9 @@
             echo "<td>{$post_content}</td>";
             echo "<td>{$post_comment_count}</td>";
             echo "<td>{$post_date}</td>";
+
+            echo "<td><a href='posts.php?reset={$post_id}'>{$post_views_count}</a></td>";
+
             echo "<td><a href='../post.php?p_id={$post_id}'>Details</a></td>";
             echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
             //javascript confirm function
@@ -158,7 +173,19 @@
           $delete = mysqli_query($connection, $query);
           header("Location: posts.php");  
         }
-      
+
+        if(isset($_GET['reset'])){
+          $id = $_GET['reset'];
+          
+          $clean_id = mysqli_real_escape_string($connection, $id);
+
+
+          $query = "UPDATE posts SET post_views_count = 0 WHERE post_id = {$clean_id} ";
+
+          $update_views_count = mysqli_query($connection, $query);
+          header("Location: posts.php");  
+        }
+     
       ?>
     </tbody>
   </table>

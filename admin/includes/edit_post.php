@@ -20,7 +20,8 @@
     $post_tags = $row['post_tags'];
     $post_content = $row['post_content'];
     $post_comment_count = $row['post_comment_count'];
-    $post_date = $row['post_date']; 
+    $post_date = $row['post_date'];
+    $post_views_count = $row['post_views_count'];
   }
 ?>
 
@@ -38,6 +39,7 @@
     
     $post_tags          = $_POST['post_tags'];
     $post_content       = $_POST['post_content'];
+    $post_views_count   = $_POST['post_views_count'];
     //$post_date          = date('d-m-y');
     //$post_comment_count = 4;
 
@@ -64,6 +66,7 @@
     $query .="post_status = '{$post_status}', ";
     $query .="post_tags   = '{$post_tags}', ";
     $query .="post_content= '{$post_content}', ";
+    $query .="post_views_count= {$post_views_count}, ";
     $query .="post_image  = '{$post_image}' ";
     $query .= "WHERE post_id = {$p_id} ";
   
@@ -123,6 +126,12 @@
       ?>
     </select>
   </div>
+
+  <div class="form-group" style="width: 100px;>
+    <label for="post_views_count">Post Visited</label>
+    <input type="number" value="<?php echo $post_views_count ; ?>" class="form-control" name="post_views_count">
+  </div>
+  
 
   <div class="form-group">
     <img width='100' src="../images/<?php echo $post_image ; ?>" alt="image" />
