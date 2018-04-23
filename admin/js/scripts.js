@@ -30,3 +30,18 @@ $(document).ready(function(){
   });
 
 });
+
+function loadUsersOnline(){
+  $.get("functions.php?onlineusers=result", function(data){
+
+    $(".users-online").text(data);
+
+  });
+}
+
+//set interval 500 milli sec
+setInterval(function(){
+  loadUsersOnline();
+}, 500);
+
+
