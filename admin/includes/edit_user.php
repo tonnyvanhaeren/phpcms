@@ -31,16 +31,22 @@ if(isset($_POST['edit_user'])) {
   $user_password = $_POST['user_password'];
   //$post_date     = ('d-m-y');
   
-  $query = "SELECT randSalt FROM users ";
-  $select_randSalt_query = mysqli_query($connection, $query);
-  if (!$select_randSalt_query){
-    die('QUERY FAILED' . mysqli_error($connection));
+  if (!empty($user_password)){
+
+    $query_password = "SELECT user_password FROM users WHERE user_id = $user_id ";
+    $get_user_query = mysqli_query($connection, $query_password);
+
+    confirmQuery($get_user_query);
+
+    $row = mysqli_fetch_array($get_user_query);
+    $db_user_password = $row['user_password'];
+
+    if($db_user_password != $user_password){
+      $password_hash = password_hash($user_password, PASSWORD_BCRYPT, array('cost'=> 12));
+    }
   }
 
-  $row = mysqli_fetch_array($select_randSalt_query);
-  $salt = $row['randSalt'];
 
-  $hashed_password = crypt($user_password, $salt);
 
   $query = "UPDATE users SET ";
   $query .="user_firstname  = '{$user_firstname}', ";
@@ -48,11 +54,13 @@ if(isset($_POST['edit_user'])) {
   $query .="user_role   =  '{$user_role}', ";
   $query .="username = '{$username}', ";
   $query .="user_email = '{$user_email}', ";
-  $query .="user_password   = '{$hashed_password}' ";
+  $query .="user_password   = '{$password_hash}' ";
   $query .= "WHERE user_id = {$user_id} ";
 
   $edit_user_query = mysqli_query($connection,$query);
   confirmQuery($edit_user_query);
+
+  header("Location: users.php");
 }
 
 ?>

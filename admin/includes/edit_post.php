@@ -1,5 +1,3 @@
-
-
 <?php
 
   if(isset($_GET['p_id'])){
@@ -127,7 +125,7 @@
     </select>
   </div>
 
-  <div class="form-group" style="width: 100px;>
+  <div class="form-group" style="width: 100px;">
     <label for="post_views_count">Post Visited</label>
     <input type="number" value="<?php echo $post_views_count ; ?>" class="form-control" name="post_views_count">
   </div>
@@ -143,7 +141,7 @@
   </div>
   <div class="form-group">
     <label for="post_content">Post Content</label>
-    <textarea class="form-control "name="post_content" id="" cols="30" rows="10"><?php echo $post_content ; ?>
+    <textarea class="form-control "name="post_content"  cols="30" rows="10"><?php echo $post_content ; ?>
     </textarea>
   </div>
     <div class="form-group">

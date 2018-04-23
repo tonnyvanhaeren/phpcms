@@ -15,11 +15,13 @@
 
     //move_uploaded_file($post_image_temp, "../images/$post_image" );
 
+    $password_hash = password_hash($user_password, PASSWORD_BCRYPT, array('cost'=> 12));
+
     $query = "INSERT INTO users (user_firstname, user_lastname, user_role ,username, 
                                 user_email, user_password) ";
               
     $query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}', '{$username}',
-                      '{$user_email}','{$user_password}') "; 
+                      '{$user_email}','{$password_hash}') "; 
 
     $create_user_query = mysqli_query($connection, $query); 
 
