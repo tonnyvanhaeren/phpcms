@@ -150,7 +150,15 @@
             echo "<td><img width='100' src='../images/$post_image' alt='post image' /></td>";
             echo "<td>{$post_tags}</td>";
             echo "<td>{$post_content}</td>";
-            echo "<td>{$post_comment_count}</td>";
+
+            $query = "SELECT * FROM comments WHERE comment_post_id = $post_id ";
+            $count_comments_query = mysqli_query($connection, $query);
+            $count_comments = mysqli_num_rows($count_comments_query);
+
+
+
+            echo "<td><a href='post_comments.php?p_id=$post_id'>{$count_comments}</a></td>";
+
             echo "<td>{$post_date}</td>";
 
             echo "<td><a href='posts.php?reset={$post_id}'>{$post_views_count}</a></td>";
