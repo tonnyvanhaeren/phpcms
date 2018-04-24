@@ -86,6 +86,7 @@
     <input value="<?php echo $post_title ; ?>" type="text" class="form-control" name="post_title">
   </div>
   <div class="form-group" style="width: 300px;">
+    <label for="post_category">Categories</label>
     <select name="post_category" id="" class="form-control"> 
       <?php 
 
@@ -106,9 +107,32 @@
       ?>
     </select>
   </div>
-  <div class="form-group">
-    <label for="Post Author">Post Author</label>
-    <input type="text" value="<?php echo $post_author ; ?>" class="form-control" name="post_author">
+
+  <div class="form-group" style="width: 400px;">
+    <label for="post_author">Created By</label>
+    <select name="post_author" id="" class="form-control">
+      <?php 
+
+        $users_query = "SELECT * FROM users "; 
+                
+        $select_users = mysqli_query($connection, $users_query);
+
+        confirmQuery($select_users);
+
+        while($row = mysqli_fetch_assoc($select_users)) {
+          
+          $user_id = $row['user_id'];
+          $username = $row['username'];
+
+          if($username == $post_author){
+            echo "<option value='{$username}' selected>{$username}</option>";
+          } else {
+            echo "<option value='{$username}'>{$username}</option>";
+          }
+        }
+      ?>
+    </select>
+
   </div>
   
   <div class="form-group" style="width: 200px;">

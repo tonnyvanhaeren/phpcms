@@ -88,7 +88,7 @@
       <tr>
         <th><input id="selectAllBoxes" type="checkbox"></th>
         <th>Id</th>
-        <th>Author</th>
+        <th>Created By</th>
         <th>Title</th>
         <th>Category</th>
         <th>Status</th>
@@ -111,6 +111,7 @@
         while($row = mysqli_fetch_assoc($select_posts)) {
           $post_id = $row['post_id'];
           $post_author = $row['post_author'];
+          //$post_user = $row['post_user'];
           $post_title = $row['post_title'];
           $post_category_id = $row['post_category_id'];
           $post_status = $row['post_status'];
@@ -120,6 +121,7 @@
           $post_comment_count = $row['post_comment_count'];
           $post_date = $row['post_date'];
           $post_views_count = $row['post_views_count'];
+
 
           echo "<tr>";
             ?>

@@ -2,7 +2,7 @@
   if(isset($_POST['create_post'])) {
     
     $post_title         = $_POST['post_title'];
-    $post_author          = $_POST['post_author'];
+    $post_author        = $_POST['post_author'];
     $post_category_id   = $_POST['post_category'];
     $post_status        = $_POST['post_status'];
 
@@ -42,7 +42,8 @@
     <input type="text" class="form-control" name="post_title">
   </div>
 
-  <div class="form-group">
+  <div class="form-group" style="width: 300px;">
+    <label for="post_category">Categories</label>
     <select name="post_category" id="" class="form-control"> 
       <?php 
 
@@ -65,10 +66,25 @@
     </select>
 
   </div>
+  <div class="form-group" style="width: 400px;">
+    <label for="post_author">Created By</label>
+    <select name="post_author" id="" class="form-control">
+      <?php 
 
-  <div class="form-group">
-    <label for="Post Author">Post Author</label>
-    <input type="text" class="form-control" name="post_author">
+        $users_query = "SELECT * FROM users "; 
+        $select_users = mysqli_query($connection, $users_query);
+        confirmQuery($select_users);
+
+        while($row = mysqli_fetch_assoc($select_users)) {
+          
+          $user_id = $row['user_id'];
+          $username = $row['username'];
+
+          echo "<option value='{$username}'>{$username}</option>";
+        }
+      ?>
+    </select>
+
   </div>
 
   <div class="form-group" style="width: 300px;">
