@@ -3,17 +3,25 @@
 <?php ob_start(); ?>
 <?php session_start(); ?>
 
-<?php 
+<?php
 
-  //check user == admin
-  if(!isset($_SESSION['user_role'])){
+if(!isset($_SESSION['user_role'])) {
+  header("Location: ../index.php");
+} else {
+  if(!is_admin($_SESSION['user_role'])) {
+  header("Location: ../index.php");
+  }
+}   
+
+//check user == admin
+/*   if(!isset($_SESSION['user_role'])){
     header("Location: ../index.php");
   } else {
     //check role of user
     if( $_SESSION['user_role'] !== 'admin' ){
       header("Location: ../index.php");
     }
-  }
+  } */
 
 ?>
 

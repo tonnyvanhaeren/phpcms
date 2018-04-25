@@ -91,7 +91,6 @@
         $delete = mysqli_query($connection, $query);
         header("Location: comments.php");  
       }
-    
     ?>
   </tbody>
 </table>

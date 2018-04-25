@@ -177,7 +177,7 @@
 
       <?php
         if(isset($_GET['delete'])){
-          $id = $_GET['delete']; 
+          $id = escape($_GET['delete']); 
           $query = "DELETE FROM posts WHERE post_id = {$id} ";
 
           $delete = mysqli_query($connection, $query);
@@ -185,7 +185,7 @@
         }
 
         if(isset($_GET['reset'])){
-          $id = $_GET['reset'];
+          $id = escape($_GET['reset']);
           
           $clean_id = mysqli_real_escape_string($connection, $id);
 

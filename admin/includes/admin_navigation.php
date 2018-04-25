@@ -11,7 +11,6 @@
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
-    <!--  <li><a href="">Users Online: <?php //echo online_users(); ?></a></li> -->
 
     <li><a href="">Users Online: <span class="users-online"></span></a></li>
     

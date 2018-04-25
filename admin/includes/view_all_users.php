@@ -55,29 +55,34 @@
     ?>
 
     <?php
-      if(isset($_GET['change_to_admin'])){
-        $user_id = $_GET['change_to_admin']; 
-        $query = "UPDATE users SET user_role = 'admin' WHERE user_id = {$user_id} ";
+      //check if request is made by admin
+      if(isset($_SESSION['user_role']) && is_admin($_SESSION['user_role'])) {
 
-        $user_role_amin = mysqli_query($connection, $query);
-        header("Location: users.php");  
-      }
+        if(isset($_GET['change_to_admin'])){
+          $user_id = escape($_GET['change_to_admin']); 
+          $query = "UPDATE users SET user_role = 'admin' WHERE user_id = {$user_id} ";
 
-      if(isset($_GET['change_to_subscriber'])){
-        $user_id = $_GET['change_to_subscriber']; 
-        $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = {$user_id} ";
+          $user_role_amin = mysqli_query($connection, $query);
+          header("Location: users.php");  
+        }
 
-        $user_subscriber_role = mysqli_query($connection, $query);
-        header("Location: users.php");   
-      }
+        if(isset($_GET['change_to_subscriber'])){
+          $user_id = escape($_GET['change_to_subscriber']); 
+          $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = {$user_id} ";
 
-      if(isset($_GET['delete'])){
-        $user_id = $_GET['delete']; 
-        $query = "DELETE FROM users WHERE user_id = {$user_id} ";
+          $user_subscriber_role = mysqli_query($connection, $query);
+          header("Location: users.php");   
+        }
 
-        $delete = mysqli_query($connection, $query);
-        header("Location: users.php");  
-      }
+        if(isset($_GET['delete'])){
+          $user_id = escape($_GET['delete']); 
+          $query = "DELETE FROM users WHERE user_id = {$user_id} ";
+
+          $delete = mysqli_query($connection, $query);
+          header("Location: users.php");  
+        }
+      }     
+
     ?>
   </tbody>
 </table>

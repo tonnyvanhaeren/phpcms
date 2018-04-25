@@ -27,17 +27,17 @@
 
   if(isset($_POST['update_post'])){
 
-    $post_title         = $_POST['post_title'];
-    $post_author        = $_POST['post_author'];
-    $post_category_id   = $_POST['post_category'];
-    $post_status        = $_POST['post_status'];
+    $post_title         = escape($_POST['post_title']);
+    $post_author        = escape($_POST['post_author']);
+    $post_category_id   = escape($_POST['post_category']);
+    $post_status        = escape($_POST['post_status']);
   
-    $post_image         = $_FILES['image']['name'];
-    $post_image_temp    = $_FILES['image']['tmp_name'];
+    $post_image         = escape($_FILES['image']['name']);
+    $post_image_temp    = escape($_FILES['image']['tmp_name']);
     
-    $post_tags          = $_POST['post_tags'];
-    $post_content       = $_POST['post_content'];
-    $post_views_count   = $_POST['post_views_count'];
+    $post_tags          = escape($_POST['post_tags']);
+    $post_content       = escape($_POST['post_content']);
+    $post_views_count   = escape($_POST['post_views_count']);
     //$post_date          = date('d-m-y');
     //$post_comment_count = 4;
 
