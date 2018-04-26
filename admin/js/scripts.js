@@ -24,7 +24,7 @@ $(document).ready(function(){
   $("body").prepend(div_box);
 
   $('#load-screen').delay(300).fadeOut(200, function(){
-    $this().remove();
+    $(this).remove();
   });
 
 });
